@@ -13,15 +13,34 @@ public class Question {
     public static boolean rerun = false;
     public static ArrayList<String> content;
 
-    public static void askQuestion(int questionNumber) {
+    public static void askQuestion(int questionNumber) throws InterruptedException {
         
         content = new ArrayList<String>(List.of(
+                // Question 1
+            "Your good friend invited you to a dinner party in the evening a day in advance. You know that you will have limited time the next day, and will have to bring a dish to contribute.: A chipotle catering set with 10 custom bowls: A snack collection of all your friends favorite chips and candies: A fancy fruit plate with a great amount of variety: A dutch oven of chicken noodle soup",
             
-            "question 1: answerA: answerB: answerC: answerD",
-            "question 2: answerA: answerB: answerC: answerD", 
-            "question 3: answerA: answerB: answerC: answerD",
-            "question 4: answerA: answerB: answerC: answerD",
-            "question 5: answerA: answerB: answerC: answerD"
+            // Question 2
+            "If you could add one additional class to the Horace Mann curriculum, what would it be?: Mental Fortification: Blindfolded Chess: Advanced Observation and Strategy: Tea Making 101",
+            
+            // Question 3
+            "You walk into a Target and see a wide selection of different pillows on sale. Which do you choose?: White, medium-firm, rectangular pillow: Plush dog pillow: Memory-foam pillow that molds to your head shape: A pillow of a giant stick of lip balm",
+            
+            // Question 4
+            "What type of watch are you choosing…? Assume they are all worth the same: G-Shock GA700: Studio Ghibli x Seiko Collaboration Watch: A really fancy one: Casio F-91W",
+        
+            // Question 5
+            "You are being sent to a deserted island and have to take one of the following items with you. Which do you prefer?: A plain brick sitting on your porch that’s been there for years: A giant plush avocado: A perfectly stacked set of coasters that you never use but look aesthetically pleasing: A half-melted candle that smells vaguely like burnt toast",
+            
+            // Question 6
+            "It’s a snow day! What are you going to do?: Lie in bed and scroll reels: Sleep in and work on homework: Roadtrip alone to Vermont to ski for the day: Bike to Soho with my friends and treat them to dinner",
+            
+            // Question 7
+            "You are offered a variety of jobs. They all pay handsomely. Which will you choose?: Teacher: Therapist: I’ll start my own business!: Truck driver",
+            
+            // Question 8
+            "You need 500,000 dollars, and fast! What are you going to do?: I’ll just get a loan!: I’ll just continue working at my current job and save.: I’ll trade stocks!: I’ll gamble all of my money!"
+                
+
             // "Your good friend invites you to a dinner party in the evening a day in advance. You know that you will have limited time the next day, and will have to bring a dish to contribute. What would you bring?: A snack collection of all your friends favorite chips and candies: A chipotle catering set with 10 custom bowls: A dutch oven of chicken noodle soup: A fancy fruit plate with a great amount of variety"
             
         ));
@@ -51,7 +70,7 @@ public class Question {
     }
 
 
-    public static void getResponse(Scanner sc){
+    public static void getResponse(Scanner sc) throws InterruptedException {
 
         String input = sc.nextLine(); 
 
@@ -92,19 +111,17 @@ public class Question {
     }
 
 
-    public static void askNextQuestion() {
-
-        if (Quiz.currentQuestionNumber < content.size()) {
+    public static void askNextQuestion() throws InterruptedException {
+        if (Quiz.currentQuestionNumber < Quiz.questionOrder.length) {
             Quiz.currentQuestionNumber++;
             askQuestion(Quiz.questionOrder[Quiz.currentQuestionNumber-1]);
         } else {
             Quiz.calculateResult();
         }
+        }
 
-    }
 
-
-    public static void resetQuiz() {
+    public static void resetQuiz() throws   InterruptedException {
         WhichOneAreYou = new int[]{0, 0, 0, 0};
         Quiz.currentQuestionNumber = 1;
         Quiz.Introscreen();
