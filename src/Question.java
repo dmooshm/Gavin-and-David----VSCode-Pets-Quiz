@@ -11,10 +11,11 @@ public class Question {
     public static List<Answer> ansList;
     public static int[] WhichOneAreYou = {0, 0, 0, 0};
     public static boolean rerun = false;
+    public static ArrayList<String> content;
 
     public static void askQuestion(int questionNumber) {
         
-        ArrayList<String> content = new ArrayList<String>(List.of(
+        content = new ArrayList<String>(List.of(
             
             "question 1: answerA: answerB: answerC: answerD",
             "question 2: answerA: answerB: answerC: answerD", 
@@ -52,7 +53,9 @@ public class Question {
 
     public static void getResponse(Scanner sc){
 
-        int response = sc.nextInt(); //get user input; set it as response
+        String input = sc.nextLine(); 
+
+        int response = stringToInt(input);
 
         if (response != 1 && response != 2 && response != 3 && response != 4) {
             System.out.println("That isn't an option :( -- Please select one of the answers below:");
@@ -75,15 +78,38 @@ public class Question {
     }
 
 
+    public static int stringToInt (String answerString) {
+
+        char[] charArray = answerString.toCharArray();
+        for (char c : charArray) {
+            if (c == '1' || c == '2' || c == '3' || c == '4') {
+                int answerInt = Character.getNumericValue(c);
+                return answerInt;
+            }
+        }
+        return 0;
+        
+    }
+
+
     public static void askNextQuestion() {
 
-        if (Quiz.currentQuestionNumber < 5) {
+        if (Quiz.currentQuestionNumber < content.size()) {
             Quiz.currentQuestionNumber++;
             askQuestion(Quiz.questionOrder[Quiz.currentQuestionNumber-1]);
         } else {
             Quiz.calculateResult();
         }
 
+    }
+
+
+    public static void resetQuiz() {
+        WhichOneAreYou = new int[]{0, 0, 0, 0};
+        Quiz.currentQuestionNumber = 1;
+        Quiz.Introscreen();
+        Collections.shuffle(Arrays.asList(Quiz.questionOrder));
+        askQuestion(Quiz.questionOrder[0]);
     }
 
 }  

@@ -89,27 +89,30 @@ public class Quiz {
             //     }
             // }
 
-            Category result = null; 
+        Category result = null; 
 
-            switch (highestIndex){
-                case 0:
-                    result = rock;
-                    break;
-                case 1:
-                    result = chicken;
-                    break;
-                case 2:
-                    result = totoro;
-                    break;
-                case 3:
-                    result = cat;
-                    break;
-                
-            }
+        switch (highestIndex){
+            case 0:
+                result = rock;
+                break;
+            case 1:
+                result = chicken;
+                break;
+            case 2:
+                result = totoro;
+                break;
+            case 3:
+                result = cat;
+                break;
+            
+        }
 
         if (result != null) {
             System.out.println("Your VS pet is " + result.label + "!");
             System.out.println(result.description);
+            System.out.println("Press Enter to restart the quiz!");
+            sc.nextLine();
+            Question.resetQuiz();
         } else {
             System.out.println("Error calculating result");
         }
