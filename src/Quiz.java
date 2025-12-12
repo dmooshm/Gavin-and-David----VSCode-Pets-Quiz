@@ -139,14 +139,6 @@ static Category cat = new Category(
 
          }
 
-
-            // for (int i = 0; i < scores.length; i++) { 
-            //     if (scores[i] > highestScore) {
-            //         highestScore = scores[i];
-            //         highestIndex = i;
-            //     }
-            // }
-
         Category result = null; 
 
         switch (highestIndex){
