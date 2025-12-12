@@ -12,6 +12,7 @@ public class Question {
     public static int[] WhichOneAreYou = {0, 0, 0, 0};
     public static boolean rerun = false;
 
+    // mixed work
     public static ArrayList<String> content = new ArrayList<>(List.of(
                 // Question 1
             "Your good friend invited you to a dinner party in the evening a day in advance. You know that you will have limited time the next day, and will have to bring a dish to contribute.: A chipotle catering set with 10 custom bowls: A snack collection of all your friends favorite chips and candies: A fancy fruit plate with a great amount of variety: A dutch oven of chicken noodle soup",
@@ -51,6 +52,8 @@ public class Question {
             "Choosing a tea, you would rather have...: Classic earl gray black tea: A wild fruit blend you’ve never tried: A rare imported green tea: Chamomile with a hint of lavender"
         ));
 
+
+    // mixed
     public static void askQuestion(int questionNumber) throws InterruptedException {
         
         
@@ -76,7 +79,7 @@ public class Question {
         getResponse(new Scanner(System.in)); 
     }
 
-
+    // david
     public static void getResponse(Scanner sc) throws InterruptedException {
 
         String input = sc.nextLine(); 
