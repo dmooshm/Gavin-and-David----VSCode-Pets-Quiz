@@ -74,9 +74,6 @@ public class Question {
         }
 
         getResponse(new Scanner(System.in)); 
-
-        // int[] WhichOneAreYou = {0, 0, 0, 0};
-
     }
 
 
